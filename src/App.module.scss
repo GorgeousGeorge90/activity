@@ -1,0 +1,10 @@
+@use 'src/assets/styles/base';
+@import 'src/assets/styles/extends';
+
+.app_wrapper {
+  @extend %flex;
+  width: base.$app_width;
+  height: 100vh;
+  background-color: base.$bg_color;
+  color: base.$main_color;
+}
