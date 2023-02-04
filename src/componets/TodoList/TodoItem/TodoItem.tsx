@@ -1,25 +1,20 @@
 import {TodoType} from '../../../types/types';
-import {FC, useRef, useState} from 'react';
+import {FC, useState} from 'react';
 import styles from './TodoItem.module.scss';
 import todoStore from "../../../store/todoStore";
-import Select from 'react-select';
+import Time from "./components/Time/Time";
+import User from "./components/User/User";
+import {observer} from "mobx-react-lite";
 
 
 
 
 
-const TodoItem:FC<TodoType> = ({id,title,complete,date}) => {
+const TodoItem:FC<TodoType> = ({id,title,complete,date,releaseDate,user}) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const [text,setText] =useState<string>('')
-    const [addUser, setAddUser] = useState<boolean>(false)
-    const [value, setValue] = useState<string>('')
 
 
-    const options = todoStore.users.map(user=> ({
-        value: user.name, label: user.name
-    }))
-
-    console.log(options)
 
     const onBlur = () => {
         todoStore.changeTodo(id,text)
@@ -35,12 +30,6 @@ const TodoItem:FC<TodoType> = ({id,title,complete,date}) => {
         todoStore.deleteTodo(id)
     }
 
-    const addNewUser = () => {
-        if (value) {
-            todoStore.choseUser(id,value)
-            setAddUser(false)
-        }
-    }
 
     return (<div className={styles.container}>
         <span>
@@ -62,18 +51,19 @@ const TodoItem:FC<TodoType> = ({id,title,complete,date}) => {
                 /></span>:
                 <span style={{textDecoration: complete ? 'line-through':'none'}}>{title}</span>
         }
-        <span onDoubleClick={()=>setAddUser(!addUser)}>&#128104;</span>
         <span onDoubleClick={()=>setEditMode(!editMode)}>&#128394;</span>
         <span onClick={onClick}>&#128465;</span>
-        {
-            addUser ? <div onBlur={()=>setAddUser(!addUser)} className={styles.select}><Select options={options}
-                                                                                               placeholder={'Add worker'}
-                                                                                               inputValue={value}
-
-                /></div>:
-                <div className={styles.date}>Created at: {date}</div>
-        }
+        <div className={styles.select}>
+            <User user={user}
+                  id={id}/>
+        </div>
+        <div className={styles.date}>
+            <Time date={date}
+                  id={id}
+                  releaseDate={releaseDate}
+        />
+         </div>
         </div>)
 }
 
-export default TodoItem
+export default observer(TodoItem)

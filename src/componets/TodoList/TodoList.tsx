@@ -16,6 +16,7 @@ const TodoList = () => {
                                         date={todo.date}
                                         complete={todo.complete}
                                         user={todo.user}
+                                        releaseDate={todo.releaseDate}
                                     />
             </li>
             )

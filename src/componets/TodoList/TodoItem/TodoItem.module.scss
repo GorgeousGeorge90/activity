@@ -4,8 +4,11 @@
   width: 220px;
   min-height: 100px;
   display: grid;
-  grid-template-rows: 1fr 15px;
+  grid-template-rows: 1fr 30px 30px;
   grid-template-columns: 20px 1fr 20px 20px;
+  grid-template-areas: 'main main main main'
+                       'user user user user'
+                       'date date date date';
   align-items: center;
   color:  #fff;
   background-color: #000;
@@ -21,15 +24,20 @@
 
   .date {
     font-size: 0.7em;
-    grid-column: 1/4;
-    justify-self: end;
+    grid-area: date;
+    justify-self: center;
   }
 
   .select {
-    transform: scale(0.7);
+    transform: scale(1.1);
+    grid-area: user ;
+    justify-self: end;
 
     input {
       background-color: darkslateblue;
+      justify-self: center;
+      transform: scale(0.5);
+
     }
-    }
+  }
 }

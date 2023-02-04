@@ -13,13 +13,6 @@ class boardStore {
     constructor() {
         makeAutoObservable(this)
     }
-
-    fetchTodos() {
-        const startBoard= this.boards.find(board=> board.id === '1')
-        if (startBoard) {
-            startBoard.todos = todoStore.todos
-        }
-    }
 }
 
 export default new boardStore()

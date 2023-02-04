@@ -7,9 +7,6 @@ import styles from  './BoardList.module.scss';
 
 
 const BoardList = () => {
-    useEffect(()=>{
-        boardStore.fetchTodos()
-    },[])
 
     return (<div className={styles.board_list_container}>
         <ul>
