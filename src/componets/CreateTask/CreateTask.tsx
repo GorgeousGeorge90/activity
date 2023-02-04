@@ -1,6 +1,7 @@
 import BaseInput from "../common /BaseInput/BaseInput";
 import todoStore from "../../store/todoStore";
 import {useState} from "react";
+import {observer} from 'mobx-react-lite';
 
 
 
@@ -13,15 +14,17 @@ const CreateTask = ()=> {
         setValue('')
     }
 
-    return <BaseInput
-        placeholder={'New task'}
-        button={'+'}
-        value={value}
-        onChange={e=> {
+    return (<div>
+        <BaseInput
+            placeholder={'New task'}
+            button={'+'}
+            value={value}
+            onChange={e=> {
             setValue(e.target.value)}
         }
         handleClick={handleClick}
         />
+    </div>)
 }
 
-export default CreateTask
+export default observer(CreateTask)

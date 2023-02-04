@@ -1,0 +1,30 @@
+@use 'src/assets/styles/base';
+@import 'src/assets/styles/extends';
+
+.form {
+  display: flex;
+  justify-content: center;
+
+  input {
+    width: base.$input_width;
+    height: base.$input_height;
+    box-sizing: border-box;
+    align-self: center;
+    border-radius: 10px;
+    border: none;
+    padding: 5px;
+    font-size: 0.8em;
+    background-color: black;
+    color: #fff;
+  }
+
+  button {
+    @extend %flex;
+    height: 20px;
+    width: 20px;
+    border-radius: 20px;
+    border:none;
+    background-color: darkslateblue;
+    color: #fff;
+  }
+}

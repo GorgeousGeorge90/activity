@@ -1,5 +1,5 @@
 import {ChangeEvent, FC, useState} from 'react';
-import todoStore from "../../../store/todoStore";
+import styles from './BaseInput.module.scss';
 
 
 type BaseInputProps = {
@@ -14,14 +14,14 @@ type BaseInputProps = {
 const BaseInput:FC<BaseInputProps> = ({placeholder,button,handleClick, value, onChange}) => {
 
 
-    return (<>
+    return (<div className={styles.form}>
         <input type="text"
                placeholder={placeholder}
                value={value}
                onChange={onChange}
         />
         <button onClick={handleClick}>{button}</button>
-        </>)
+        </div>)
 }
 
 export default BaseInput

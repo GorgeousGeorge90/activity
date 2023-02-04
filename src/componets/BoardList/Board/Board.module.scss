@@ -1,0 +1,25 @@
+@use "src/assets/styles/base";
+@import 'src/assets/styles/extends';
+
+.board_container {
+  display: grid;
+  grid-template-rows: 40px 1fr;
+  justify-content: center;
+  min-height: 450px;
+  min-width: 250px;
+  color: black;
+  border: solid 2px gainsboro;
+  border-top: none;
+  border-radius: 0 0 15px 15px;
+
+
+  h3 {
+    @extend %flex;
+    font-family: base.$h3_font;
+  }
+
+  ul {
+    align-self: start;
+    list-style: none;
+  }
+}

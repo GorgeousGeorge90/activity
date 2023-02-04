@@ -1,23 +1,27 @@
 import {observer} from 'mobx-react-lite';
 import todoStore from '../../store/todoStore';
 import TodoItem from './TodoItem/TodoItem';
+import styles from './TodoList.module.scss';
 
 
 const TodoList = () => {
 
-    return (<ul>
+    return (<div className={styles.container}>
+        <ul className={styles.container}>
         {
-            todoStore.todos.map(todo => <li>
+            todoStore.todos.map(todo => <li key={todo.id}>
                                     <TodoItem
-                                        key={todo.id}
                                         id={todo.id}
                                         title={todo.title}
+                                        date={todo.date}
                                         complete={todo.complete}
+                                        user={todo.user}
                                     />
             </li>
             )
         }
-    </ul>)
+    </ul>
+</div>)
 }
 
 

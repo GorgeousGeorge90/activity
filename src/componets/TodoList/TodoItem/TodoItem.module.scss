@@ -1,0 +1,35 @@
+@use 'src/assets/styles/base';
+
+.container {
+  width: 220px;
+  min-height: 100px;
+  display: grid;
+  grid-template-rows: 1fr 15px;
+  grid-template-columns: 20px 1fr 20px 20px;
+  align-items: center;
+  color:  #fff;
+  background-color: #000;
+  font-family: 'Quicksand', sans-serif;
+  border:none;
+  border-radius: 5px;
+  word-break: break-all;
+  padding: 5px;
+
+  :nth-child(2) {
+    padding-left: 5px;
+  }
+
+  .date {
+    font-size: 0.7em;
+    grid-column: 1/4;
+    justify-self: end;
+  }
+
+  .select {
+    transform: scale(0.7);
+
+    input {
+      background-color: darkslateblue;
+    }
+    }
+}

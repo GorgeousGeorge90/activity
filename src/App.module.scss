@@ -7,4 +7,9 @@
   height: 100vh;
   background-color: base.$bg_color;
   color: base.$main_color;
+  margin: 0 auto;
+
+  p {
+    color:#000;
+  }
 }
