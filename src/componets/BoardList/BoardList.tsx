@@ -1,5 +1,5 @@
 import {observer} from 'mobx-react-lite';
-import {useEffect} from 'react';
+import {Reorder} from 'framer-motion';
 import boardStore from "../../store/boardStore";
 import Board from "./Board/Board";
 import styles from  './BoardList.module.scss';

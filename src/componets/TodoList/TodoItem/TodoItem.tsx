@@ -5,12 +5,14 @@ import todoStore from "../../../store/todoStore";
 import Time from "./components/Time/Time";
 import User from "./components/User/User";
 import {observer} from "mobx-react-lite";
+import {Reorder} from 'framer-motion';
 
 
+type TodoProps = {
+    todo:TodoType,
+} & TodoType
 
-
-
-const TodoItem:FC<TodoType> = ({id,title,complete,date,releaseDate,user}) => {
+const TodoItem:FC<TodoProps> = ({id,title,complete,date,releaseDate,user, todo}) => {
     const [editMode, setEditMode] = useState<boolean>(false)
     const [text,setText] =useState<string>('')
 
@@ -31,7 +33,8 @@ const TodoItem:FC<TodoType> = ({id,title,complete,date,releaseDate,user}) => {
     }
 
 
-    return (<div className={styles.container}>
+    return (<Reorder.Item value={todo}>
+        <div className={styles.container}>
         <span>
             <input type="checkbox"
                    checked={complete}
@@ -63,7 +66,8 @@ const TodoItem:FC<TodoType> = ({id,title,complete,date,releaseDate,user}) => {
                   releaseDate={releaseDate}
         />
          </div>
-        </div>)
+        </div>
+</Reorder.Item>)
 }
 
 export default observer(TodoItem)

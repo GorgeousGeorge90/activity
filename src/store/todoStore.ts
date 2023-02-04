@@ -69,6 +69,14 @@ class todoStore {
         }
     }
 
+    deleteUser(id:string,name:string) {
+        const task = this.todos.find(todo => todo.id === id)
+        const user = this.users.find(user=> user.name === name)
+        if (task && user) {
+            task.user = null
+        }
+    }
+
     addReleaseDate(date:string, id:string) {
         const todo = this.todos.find(todo=> todo.id === id)
         if (todo) {

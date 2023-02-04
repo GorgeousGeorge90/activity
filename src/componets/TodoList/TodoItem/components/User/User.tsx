@@ -20,14 +20,18 @@ const User:FC<UserProps> = ({user,id}) => {
         value: user.name, label: user.name
     }))
 
-    const onBlur = ()=> {
-        setEditMode(!editMode)
+    const onClick = () => {
+        if(user) {
+            todoStore.deleteUser(id, user.name)
+            setEditMode(!editMode)
+        }
     }
 
     if (user) {
         return (<div className={styles.user}>
             <span><img src={user.avatar} alt='ava'/></span>
             <span>{user.name}</span>
+            <span onClick={onClick}> X</span>
         </div>)
     }
 
@@ -38,7 +42,7 @@ const User:FC<UserProps> = ({user,id}) => {
 
     return (<div>
         {
-            editMode ? <div onBlur={onBlur}  className={styles.select}>
+            editMode ? <div className={styles.select}>
                             <Select options={options}
                                     placeholder={'Add worker'}
                                     onChange={onChange}
